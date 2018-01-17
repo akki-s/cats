@@ -13,7 +13,7 @@ using System.Net;
 
 namespace AGL.Pets.Service.Tests.Repositories
 {
-    public class GetAllPetsFromAGLApiTests
+    public class RepositoryGetAllPetsFromAGLApiTests
     {
         [Fact]
         public async Task ResultsReturnedWhenApiIsUp()
