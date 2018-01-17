@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AGL.Cats.Core\AGL.Cats.Core.csproj" />
-    <ProjectReference Include="..\AGL.Cats.Service\AGL.Cats.Service.csproj" />
+    <ProjectReference Include="..\AGL.Pets.Core\AGL.Pets.Core.csproj" />
+    <ProjectReference Include="..\AGL.Pets.Service\AGL.Pets.Service.csproj" />
   </ItemGroup>
 
 </Project>

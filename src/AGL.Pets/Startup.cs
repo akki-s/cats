@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using AGL.Cats.Core.Interfaces;
-using AGL.Cats.Service;
-using AGL.Cats.Service.Repositories;
+using AGL.Pets.Core.Interfaces;
+using AGL.Pets.Service;
+using AGL.Pets.Service.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -38,8 +38,8 @@ namespace AGL.Cats
                 options.IncludeXmlComments(Path.ChangeExtension(entryAssembly.Location, "xml"));
             });
 
-            services.AddScoped<ICatsRepository, CatsRepository>();
-            services.AddScoped<ICatsService, CatsService>();
+            services.AddScoped<IPetsRepository, PetsRepository>();
+            services.AddScoped<IPetsService, PetsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

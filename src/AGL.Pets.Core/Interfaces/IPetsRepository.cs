@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AGL.Cats.Service.Tests.Repositories
+namespace AGL.Pets.Core.Interfaces
 {
-    public class GetCatsFromAGLApiTests
+    public interface IPetsRepository
     {
     }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AGL.Cats.Core.Interfaces
+namespace AGL.Pets.Core.Interfaces
 {
-    public interface ICatsRepository
+    public interface IPetsService
     {
     }
 }
