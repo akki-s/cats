@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using AGL.Pets.Core.Interfaces;
@@ -40,6 +41,11 @@ namespace AGL.Cats
 
             services.AddScoped<IPetsRepository, PetsRepository>();
             services.AddScoped<IPetsService, PetsService>();
+
+            //Microsoft patterns and practices suggest not to use using block with HttpClient as it implements IDisposable indirectly.
+            //Instead Microsoft suggests to use this anti pattern to share single instance of HttpClient.
+            //https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/
+            services.AddSingleton<HttpClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

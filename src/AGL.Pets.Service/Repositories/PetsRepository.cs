@@ -14,11 +14,12 @@ namespace AGL.Pets.Service.Repositories
     {
         //Microsoft patterns and practices suggest not to use using block with HttpClient as it implements IDisposable indirectly.
         //Instead Microsoft suggests to use this anti pattern to share single instance of HttpClient.
-        private static HttpClient _httpClient;
+        //https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/
+        private HttpClient _httpClient;
 
-        public PetsRepository()
+        public PetsRepository(HttpClient httpClient)
         {
-            _httpClient = new HttpClient();
+            _httpClient = httpClient;
         }
 
         public async Task<IEnumerable<Owner>> GetAllOwnersAndPets()
@@ -30,11 +31,11 @@ namespace AGL.Pets.Service.Repositories
             {
                 var data = await response.Content.ReadAsStringAsync()
                     .ConfigureAwait(false);
+
                 return JsonConvert.DeserializeObject<List<Owner>>(data);
             }
             else
                 return null;
-
         }
     }
 }
