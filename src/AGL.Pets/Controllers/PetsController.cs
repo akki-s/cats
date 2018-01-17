@@ -38,7 +38,7 @@ namespace AGL.Pets.Controllers
         {
             try
             {
-                var result = await _petsService.GetCatsGroupedByOwnerGender();                
+                var result = await _petsService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);                
                 return Ok(result);
             }
             catch (Exception)

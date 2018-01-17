@@ -18,7 +18,7 @@ namespace AGL.Pets.Service
 
         public async Task<List<GroupedByOwnerGenderViewModel>> GetCatsGroupedByOwnerGender()
         {
-            var ownersAndPetsResult = await _petsRepository.GetAllOwnersAndPets();
+            var ownersAndPetsResult = await _petsRepository.GetAllOwnersAndPets().ConfigureAwait(false);
 
             if (null == ownersAndPetsResult)
                 return null;

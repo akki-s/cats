@@ -21,7 +21,7 @@ namespace AGL.Pets.Service.Tests
                 .ReturnsAsync(() => null);
 
             var catService = new PetsService(mockRepository.Object);
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
             actualResult.Should().BeNull();
         }
 
@@ -55,7 +55,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult.Count.Should().Be(2);
@@ -99,7 +99,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult.Count.Should().Be(2);
@@ -141,7 +141,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult.Count.Should().Be(1);
@@ -178,7 +178,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult.Count.Should().Be(1);
@@ -216,7 +216,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult.Count.Should().Be(1);
@@ -246,7 +246,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
 
@@ -275,7 +275,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult[0].Cats[0].Name.Should().Be(string.Empty);
@@ -303,7 +303,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult[0].Cats.Count.Should().Be(1);
@@ -336,7 +336,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult.Count.Should().Be(2);
@@ -385,7 +385,7 @@ namespace AGL.Pets.Service.Tests
 
             var catService = new PetsService(mockRepository.Object);
 
-            var actualResult = await catService.GetCatsGroupedByOwnerGender();
+            var actualResult = await catService.GetCatsGroupedByOwnerGender().ConfigureAwait(false);
 
             actualResult.Should().NotBeNull();
             actualResult.Count.Should().Be(3);

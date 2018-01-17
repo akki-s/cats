@@ -41,7 +41,7 @@ namespace AGL.Pets.Service.Tests.Repositories
 
             var mockJson = JsonConvert.SerializeObject(mockDataForGrouping);
             var repo = new PetsRepository(new HttpClient(new MockHttpHandler(mockJson)));
-            var results = await repo.GetAllOwnersAndPets();
+            var results = await repo.GetAllOwnersAndPets().ConfigureAwait(false);
             results.Should().NotBeNull();
         }
 
@@ -50,7 +50,7 @@ namespace AGL.Pets.Service.Tests.Repositories
         {
             
             var repo = new PetsRepository(new HttpClient(new MockHttpHandler(string.Empty, HttpStatusCode.OK)));
-            var results = await repo.GetAllOwnersAndPets();
+            var results = await repo.GetAllOwnersAndPets().ConfigureAwait(false);
             results.Should().BeNull();
         }
 
@@ -58,7 +58,7 @@ namespace AGL.Pets.Service.Tests.Repositories
         public async Task NullReturnedWhenApiResponseIsOkAndDataIsArbitrary()
         {
             var repo = new PetsRepository(new HttpClient(new MockHttpHandler("null", HttpStatusCode.OK)));
-            var results = await repo.GetAllOwnersAndPets();
+            var results = await repo.GetAllOwnersAndPets().ConfigureAwait(false);
             results.Should().BeNull();
         }
 
@@ -66,7 +66,7 @@ namespace AGL.Pets.Service.Tests.Repositories
         public async Task NullReturnedWhenApiIsDown()
         {
             var repo = new PetsRepository(new HttpClient(new MockHttpHandler(string.Empty, HttpStatusCode.BadRequest)));
-            var results = await repo.GetAllOwnersAndPets();
+            var results = await repo.GetAllOwnersAndPets().ConfigureAwait(false);
             results.Should().BeNull();
         }
     }

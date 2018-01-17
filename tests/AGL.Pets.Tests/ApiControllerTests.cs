@@ -25,7 +25,7 @@ namespace AGL.Pets.Tests
 
             var controller = new PetsController(mockService.Object);
 
-            IActionResult response = await controller.Get();
+            IActionResult response = await controller.Get().ConfigureAwait(false);
             response.Should().BeOfType<OkObjectResult>();
             var resultObject = ((OkObjectResult)response).Value as GroupedByOwnerGenderViewModel;
             resultObject.Should().BeNull();
@@ -41,7 +41,7 @@ namespace AGL.Pets.Tests
 
             var controller = new PetsController(mockService.Object);
 
-            IActionResult response = await controller.Get();
+            IActionResult response = await controller.Get().ConfigureAwait(false);
             response.Should().BeOfType<ObjectResult>();
             var statusCode = ((ObjectResult)response).StatusCode;
             statusCode.Should().Be(StatusCodes.Status500InternalServerError);
@@ -75,7 +75,7 @@ namespace AGL.Pets.Tests
 
             var controller = new PetsController(mockService.Object);
 
-            IActionResult response = await controller.Get();
+            IActionResult response = await controller.Get().ConfigureAwait(false);
             response.Should().BeOfType<OkObjectResult>();
             var resultObject = ((OkObjectResult)response).Value as List<GroupedByOwnerGenderViewModel>;
 
