@@ -107,9 +107,8 @@ namespace AGL.Pets.Service.Tests
             actualResult[1].OwnerGender.Should().Be("Male");
 
             //only cats should be there
-            actualResult[0].Cats.Any(c => !c.PetType.Equals("cat", StringComparison.OrdinalIgnoreCase)).Should().BeFalse();
-            actualResult[1].Cats.Any(c => !c.PetType.Equals("cat", StringComparison.OrdinalIgnoreCase)).Should().BeFalse();
-
+            actualResult[0].Cats.Any(c => c.Name.Equals("scooby", StringComparison.OrdinalIgnoreCase)).Should().BeFalse();
+            actualResult[0].Cats.Any(c => c.Name.Equals("scooby", StringComparison.OrdinalIgnoreCase)).Should().BeFalse();
         }
 
         [Fact]

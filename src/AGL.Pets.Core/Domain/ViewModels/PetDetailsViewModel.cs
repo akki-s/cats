@@ -8,7 +8,6 @@ namespace AGL.Pets.Core.Domain.ViewModels
     {
         public string Name { get; set; }
         public string OwnerName { get; set; }
-        public string PetType { get; set; }
 
     }
 }

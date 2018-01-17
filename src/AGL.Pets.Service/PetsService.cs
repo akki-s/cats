@@ -35,21 +35,17 @@ namespace AGL.Pets.Service
                     OwnerGender = string.IsNullOrEmpty(a.Gender) ? string.Empty : a.Gender,
                     PetName = string.IsNullOrEmpty(b.Name) ? string.Empty : b.Name,
                     PetType = string.IsNullOrEmpty(b.Type) ? string.Empty : b.Type,
-                    //if owner gender, owner name or cat name are null or empty, set it as invalid
-                    //IsValid = !string.IsNullOrEmpty(a.Gender) && !string.IsNullOrEmpty(b.Type) && !string.IsNullOrEmpty(b.Name) 
                 }))
                                                 .GroupBy(x => x.OwnerGender)
                                                 .Select(g => new GroupedByOwnerGenderViewModel
                                                 {
                                                     OwnerGender = g.Key,
-                                                   // IsValid = g.First().IsValid,
                                                     Cats = g
                                                     .Where(o => o.PetType.Equals("cat", StringComparison.OrdinalIgnoreCase))
                                                     .Select(o => new PetDetailsViewModel
                                                     {
                                                         Name = o.PetName,
                                                         OwnerName = o.OwnerName,
-                                                        PetType = o.PetType,
                                                     })
                                                     .OrderBy(c => c.Name).ThenBy(c => c.OwnerName) // cats are first sorted by their name, and then by their owner name
                                                     .ToList()
@@ -57,12 +53,7 @@ namespace AGL.Pets.Service
 
 
 
-            //ASSUMPTION: if owner gender, owner name or cat name are null or empty, remove from final results.
-            //This can be confirmed with business what's needed here. If these are needed, then business should
-            //specify default values in such cases.
-            //var results = groupedResults.Where(g => g.IsValid)
-            //    .OrderBy(cats => cats.OwnerGender); //order by owner gender
-
+           
             var results = groupedResults.Where(g => g.Cats.Count > 0) //if owner has pets other than cats, this should be 0
                 .OrderBy(g => g.OwnerGender); //order by owner gender
 
