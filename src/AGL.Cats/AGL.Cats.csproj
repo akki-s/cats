@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AGL.Cats.Core\AGL.Cats.Core.csproj" />
+    <ProjectReference Include="..\AGL.Cats.Service\AGL.Cats.Service.csproj" />
   </ItemGroup>
 
 </Project>

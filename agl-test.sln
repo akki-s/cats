@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.Cats.Core", "src\AGL.Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGL.Cats.Service", "src\AGL.Cats.Service\AGL.Cats.Service.csproj", "{EE83939B-6A4F-479F-9062-54A0AE17C32C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B0614BF0-CB4C-4CEC-8856-4B0B7CF582C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGL.Cats.Service.Tests", "tests\AGL.Cats.Service.Tests\AGL.Cats.Service.Tests.csproj", "{A0DA239B-1BF3-4BFE-ABE7-651504318733}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{EE83939B-6A4F-479F-9062-54A0AE17C32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE83939B-6A4F-479F-9062-54A0AE17C32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE83939B-6A4F-479F-9062-54A0AE17C32C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0DA239B-1BF3-4BFE-ABE7-651504318733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0DA239B-1BF3-4BFE-ABE7-651504318733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0DA239B-1BF3-4BFE-ABE7-651504318733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0DA239B-1BF3-4BFE-ABE7-651504318733}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A0DA239B-1BF3-4BFE-ABE7-651504318733} = {B0614BF0-CB4C-4CEC-8856-4B0B7CF582C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {42A33688-D766-418D-AB97-49D6C8276B86}
