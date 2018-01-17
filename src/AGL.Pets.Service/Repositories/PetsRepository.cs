@@ -1,5 +1,7 @@
 ﻿using AGL.Pets.Core.Domain.Models;
+using AGL.Pets.Core.Domain.ViewModels;
 using AGL.Pets.Core.Interfaces;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -16,15 +18,17 @@ namespace AGL.Pets.Service.Repositories
         //Instead Microsoft suggests to use this anti pattern to share single instance of HttpClient.
         //https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/
         private HttpClient _httpClient;
+        private IOptionsMonitor<ApplicationSettings> _appSettings;
 
-        public PetsRepository(HttpClient httpClient)
+        public PetsRepository(HttpClient httpClient, IOptionsMonitor<ApplicationSettings> settings)
         {
             _httpClient = httpClient;
+            _appSettings = settings;
         }
 
         public async Task<IEnumerable<Owner>> GetAllOwnersAndPets()
         {
-            var response = await _httpClient.GetAsync("http://agl-developer-test.azurewebsites.net/people.json")
+            var response = await _httpClient.GetAsync(_appSettings.CurrentValue.AGLPetsApiUrl)
                 .ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)

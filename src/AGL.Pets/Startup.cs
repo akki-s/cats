@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using AGL.Pets.Core.Domain.ViewModels;
 using AGL.Pets.Core.Interfaces;
 using AGL.Pets.Service;
 using AGL.Pets.Service.Repositories;
@@ -46,6 +47,8 @@ namespace AGL.Cats
             //Instead Microsoft suggests to use this anti pattern to share single instance of HttpClient.
             //https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/
             services.AddSingleton<HttpClient>();
+
+            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

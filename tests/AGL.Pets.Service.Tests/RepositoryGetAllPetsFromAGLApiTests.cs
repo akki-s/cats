@@ -10,11 +10,24 @@ using AGL.Pets.Service.Tests.Repositories.Fakes;
 using AGL.Pets.Core.Domain.Models;
 using Newtonsoft.Json;
 using System.Net;
+using Moq;
+using Microsoft.Extensions.Options;
+using AGL.Pets.Core.Domain.ViewModels;
 
 namespace AGL.Pets.Service.Tests.Repositories
 {
     public class RepositoryGetAllPetsFromAGLApiTests
     {
+        private readonly Mock<IOptionsMonitor<ApplicationSettings>> _mockApplicationSettings;
+
+        public RepositoryGetAllPetsFromAGLApiTests()
+        {
+            _mockApplicationSettings = new Mock<IOptionsMonitor<ApplicationSettings>>();
+            _mockApplicationSettings
+                .Setup(x => x.CurrentValue)
+                .Returns(new ApplicationSettings { AGLPetsApiUrl = new Uri("http://dummy") });
+        }
+
         [Fact]
         public async Task ResultsReturnedWhenApiIsUp()
         {
@@ -40,7 +53,7 @@ namespace AGL.Pets.Service.Tests.Repositories
             };
 
             var mockJson = JsonConvert.SerializeObject(mockDataForGrouping);
-            var repo = new PetsRepository(new HttpClient(new MockHttpHandler(mockJson)));
+            var repo = new PetsRepository(new HttpClient(new MockHttpHandler(mockJson)), _mockApplicationSettings.Object);
             var results = await repo.GetAllOwnersAndPets().ConfigureAwait(false);
             results.Should().NotBeNull();
         }
@@ -49,7 +62,7 @@ namespace AGL.Pets.Service.Tests.Repositories
         public async Task NullReturnedWhenApiResponseIsOkAndDataIsEmpty()
         {
             
-            var repo = new PetsRepository(new HttpClient(new MockHttpHandler(string.Empty, HttpStatusCode.OK)));
+            var repo = new PetsRepository(new HttpClient(new MockHttpHandler(string.Empty, HttpStatusCode.OK)), _mockApplicationSettings.Object);
             var results = await repo.GetAllOwnersAndPets().ConfigureAwait(false);
             results.Should().BeNull();
         }
@@ -57,7 +70,7 @@ namespace AGL.Pets.Service.Tests.Repositories
         [Fact]
         public async Task NullReturnedWhenApiResponseIsOkAndDataIsArbitrary()
         {
-            var repo = new PetsRepository(new HttpClient(new MockHttpHandler("null", HttpStatusCode.OK)));
+            var repo = new PetsRepository(new HttpClient(new MockHttpHandler("null", HttpStatusCode.OK)), _mockApplicationSettings.Object);
             var results = await repo.GetAllOwnersAndPets().ConfigureAwait(false);
             results.Should().BeNull();
         }
@@ -65,7 +78,7 @@ namespace AGL.Pets.Service.Tests.Repositories
         [Fact]
         public async Task NullReturnedWhenApiIsDown()
         {
-            var repo = new PetsRepository(new HttpClient(new MockHttpHandler(string.Empty, HttpStatusCode.BadRequest)));
+            var repo = new PetsRepository(new HttpClient(new MockHttpHandler(string.Empty, HttpStatusCode.BadRequest)), _mockApplicationSettings.Object);
             var results = await repo.GetAllOwnersAndPets().ConfigureAwait(false);
             results.Should().BeNull();
         }
