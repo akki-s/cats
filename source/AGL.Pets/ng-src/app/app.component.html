@@ -1,26 +1,39 @@
-<div style="text-align:center">
-  <h1>
-    {{ title }}
-  </h1>
-  <h3 *ngIf="isLoading">Loading...</h3>
-  <h3>{{message || message}}</h3>
 
-</div>
+<div class="container">
 
-<div class='petsList'>
-  <ul>
-    <li *ngFor="let owner of petsResult">
-      <h3>
-        <span *ngIf="owner.ownerGender == ''">Unspecified</span>
-        <span *ngIf="owner.ownerGender != ''">{{owner.ownerGender}}</span>
-      </h3>
-      <div *ngFor="let cat of owner.cats">
-        <p>
-          <span *ngIf="cat.name != ''">{{cat.name}}</span>
-          <span *ngIf="cat.name == ''">A Cat</span>
-          <span *ngIf="cat.ownerName != ''">({{cat.ownerName}})</span>
-        </p>
-      </div>
-    </li>
-  </ul>
+  <div class="col-xs-12 text-center">
+    <h1>
+      {{ title }}
+    </h1>
+    <h3 *ngIf="isLoading">Loading...</h3>
+    <h3>{{message || message}}</h3>
+
+  </div>
+
+  <br />
+  <br />
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let owner of petsResult">
+
+        <h3>
+          <span *ngIf="owner.ownerGender == ''">Unspecified</span>
+          <span *ngIf="owner.ownerGender != ''">{{owner.ownerGender}}</span>
+        </h3>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let cat of owner.cats">
+            <span *ngIf="cat.name != ''">{{cat.name}}</span>
+            <span *ngIf="cat.name == ''">A Cat</span>
+            <span *ngIf="cat.ownerName != ''">(owner: {{cat.ownerName}})</span>
+          </li>
+        </ul>
+
+      </li>
+    </ul>
+
+
+  </div>
+
+
+
 </div>
