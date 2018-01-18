@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug (ng build)" />
+    <Exec Command="ng build" />
   </Target>
 
 </Project>
