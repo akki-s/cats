@@ -32,4 +32,8 @@
     <ProjectReference Include="..\AGL.Pets.Service\AGL.Pets.Service.csproj" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="ng build" />
+  </Target>
+
 </Project>

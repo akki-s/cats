@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,49 +19,67 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace AGL.Cats
 {
-    public class Startup
+  public class Startup
+  {
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-
-            var entryAssembly = Assembly.GetEntryAssembly();
-            services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new Info { Version = "v1", Title = "AGL Cats API" });
-                options.IncludeXmlComments(Path.ChangeExtension(entryAssembly.Location, "xml"));
-            });
-
-            services.AddScoped<IPetsRepository, PetsRepository>();
-            services.AddScoped<IPetsService, PetsService>();
-
-            //Microsoft patterns and practices suggest not to use using block with HttpClient as it implements IDisposable indirectly.
-            //Instead Microsoft suggests to use this anti pattern to share single instance of HttpClient.
-            //https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/
-            services.AddSingleton<HttpClient>();
-
-            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseSwagger();
-            app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "AGL Cats API v1"));
-            app.UseMvcWithDefaultRoute();
-        }
+      Configuration = configuration;
     }
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+      services.AddMvc();
+
+      var entryAssembly = Assembly.GetEntryAssembly();
+      services.AddSwaggerGen(options =>
+      {
+        options.SwaggerDoc("v1", new Info { Version = "v1", Title = "AGL Cats API" });
+        options.IncludeXmlComments(Path.ChangeExtension(entryAssembly.Location, "xml"));
+      });
+
+      services.AddScoped<IPetsRepository, PetsRepository>();
+      services.AddScoped<IPetsService, PetsService>();
+
+      //Microsoft patterns and practices suggest not to use using block with HttpClient as it implements IDisposable indirectly.
+      //Instead Microsoft suggests to use this anti pattern to share single instance of HttpClient.
+      //https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/
+      services.AddSingleton<HttpClient>();
+
+      services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+      if (env.IsDevelopment())
+      {
+        app.UseDeveloperExceptionPage();
+      }
+
+
+      // If no page found, or request has no extension or if it's not api request, go to angular page
+      app.Use(async (context, next) =>
+      {
+        await next();
+        if (context.Response.StatusCode == 404 &&
+        !Path.HasExtension(context.Request.Path.Value) &&
+        !context.Request.Path.Value.StartsWith("/api"))
+        {
+          context.Request.Path = "/index.html";
+          context.Response.StatusCode = 200; 
+          await next();
+        }
+      });
+
+      app.UseDefaultFiles();
+      app.UseStaticFiles();
+
+      app.UseSwagger();
+      app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "AGL Cats API v1"));
+      app.UseMvcWithDefaultRoute();
+    }
+  }
 }
