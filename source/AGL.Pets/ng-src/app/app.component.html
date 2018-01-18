@@ -1,7 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
     {{ title }}
   </h1>
+  <h3 ng-show="!isLoading">Loading...</h3>
+  <h3>{{message || message}}</h3>
+
 </div>
 
+<div class='petsList'>
+  <ul>
+    <li *ngFor="let owner of petsResult">
+      <h3>{{owner.ownerGender}}</h3>
+      <div *ngFor="let cat of owner.cats">
+        <p>{{cat.name}} </p>
+      </div>
+    </li>
+  </ul>
+</div>
