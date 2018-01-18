@@ -2,7 +2,7 @@
   <h1>
     {{ title }}
   </h1>
-  <h3 ng-show="!isLoading">Loading...</h3>
+  <h3 *ngIf="isLoading">Loading...</h3>
   <h3>{{message || message}}</h3>
 
 </div>

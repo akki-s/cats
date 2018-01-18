@@ -1,7 +1,7 @@
 
 ##Technology Used
 - dotnet Core 2.0
-- angular js 
+- Angular
 - XUnit for Unit Tests
 - Moq for creating mocks in unit tests
 - FluentAssertions for assertions in unit tests
@@ -19,7 +19,7 @@
 - For quick view, i've deployed the app to Azure here -> [https://aakash-agl.azurewebsites.net/](https://aakash-agl.azurewebsites.net/)
 - API endpoint to get grouped content -> [https://aakash-agl.azurewebsites.net/api/pets/cats](https://aakash-agl.azurewebsites.net/api/pets/cats)
 
-## Angular JS Scaffold
+## Angular App Scaffold
 
 Angular App was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.4.
 
