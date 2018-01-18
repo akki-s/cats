@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.Pets", "src\AGL.Pets\AGL.Pets.csproj", "{87696BB8-21B7-4A79-B5AE-C842DB627E41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.Pets", "source\AGL.Pets\AGL.Pets.csproj", "{87696BB8-21B7-4A79-B5AE-C842DB627E41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.Pets.Core", "src\AGL.Pets.Core\AGL.Pets.Core.csproj", "{8B3EAD21-F73C-4A9A-BD0C-2F629C8E877D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.Pets.Core", "source\AGL.Pets.Core\AGL.Pets.Core.csproj", "{8B3EAD21-F73C-4A9A-BD0C-2F629C8E877D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.Pets.Service", "src\AGL.Pets.Service\AGL.Pets.Service.csproj", "{EE83939B-6A4F-479F-9062-54A0AE17C32C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.Pets.Service", "source\AGL.Pets.Service\AGL.Pets.Service.csproj", "{EE83939B-6A4F-479F-9062-54A0AE17C32C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B0614BF0-CB4C-4CEC-8856-4B0B7CF582C5}"
 EndProject
