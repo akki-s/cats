@@ -10,9 +10,16 @@
 <div class='petsList'>
   <ul>
     <li *ngFor="let owner of petsResult">
-      <h3>{{owner.ownerGender}}</h3>
+      <h3>
+        <span *ngIf="owner.ownerGender == ''">Unspecified</span>
+        <span *ngIf="owner.ownerGender != ''">{{owner.ownerGender}}</span>
+      </h3>
       <div *ngFor="let cat of owner.cats">
-        <p>{{cat.name}} </p>
+        <p>
+          <span *ngIf="cat.name != ''">{{cat.name}}</span>
+          <span *ngIf="cat.name == ''">A Cat</span>
+          <span *ngIf="cat.ownerName != ''">({{cat.ownerName}})</span>
+        </p>
       </div>
     </li>
   </ul>
