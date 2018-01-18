@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\source\AGL.Pets.Core\AGL.Pets.Core.csproj" />
     <ProjectReference Include="..\..\source\AGL.Pets.Service\AGL.Pets.Service.csproj" />
-    <ProjectReference Include="..\..\source\AGL.Pets\AGL.Pets.csproj" />
   </ItemGroup>
 
 </Project>

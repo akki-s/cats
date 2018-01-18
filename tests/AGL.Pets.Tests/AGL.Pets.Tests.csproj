@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AGL.Pets.Core\AGL.Pets.Core.csproj" />
-    <ProjectReference Include="..\..\src\AGL.Pets\AGL.Pets.csproj" />
+    <ProjectReference Include="..\..\source\AGL.Pets.Core\AGL.Pets.Core.csproj" />
+    <ProjectReference Include="..\..\source\AGL.Pets\AGL.Pets.csproj" />
   </ItemGroup>
 
 </Project>
