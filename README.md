@@ -1,5 +1,5 @@
-
 ##Technology Used
+
 - dotnet Core 2.0
 - Angular
 - XUnit for Unit Tests
@@ -8,6 +8,7 @@
 
 
 ##Assumptions
+
 - When two owners of same gender have a cat with same name, then sort by owner name
 - When there are no cats for a given gender, don't show that gender.
 - When there are cats where owner gender is not specified, group them under empty string gender in Api. On the UI show it as Unspecified
@@ -16,8 +17,10 @@
 
 
 ##Details
+
 - For quick view, i've deployed the app to Azure here -> [https://aakash-agl.azurewebsites.net/](https://aakash-agl.azurewebsites.net/)
-- API endpoint to get grouped content -> [https://aakash-agl.azurewebsites.net/api/pets/cats](https://aakash-agl.azurewebsites.net/api/pets/cats)
+- Swagger endpoint for Api -> [https://aakash-agl.azurewebsites.net/swagger](https://aakash-agl.azurewebsites.net/swagger)
+- API endpoint to get grouped content -> [https://aakash-agl.azurewebsites.net/api/pets/cats](https://aakash-agl.azurewebsites.net/api/pets/)
 
 ## Angular App Scaffold
 
