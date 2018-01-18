@@ -32,4 +32,8 @@
     <ProjectReference Include="..\AGL.Pets.Service\AGL.Pets.Service.csproj" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="npm install&#xD;&#xA;ng build" />
+  </Target>
+
 </Project>

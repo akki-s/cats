@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../ng-src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\r\n  <h1>\r\n    {{ title }}\r\n  </h1>\r\n  <h3 *ngIf=\"isLoading\">Loading...</h3>\r\n  <h3>{{message || message}}</h3>\r\n\r\n</div>\r\n\r\n<div class='petsList'>\r\n  <ul>\r\n    <li *ngFor=\"let owner of petsResult\">\r\n      <h3>{{owner.ownerGender}}</h3>\r\n      <div *ngFor=\"let cat of owner.cats\">\r\n        <p>{{cat.name}} </p>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n</div>\r\n"
+module.exports = "<div style=\"text-align:center\">\r\n  <h1>\r\n    Welcome to {{ title }}\r\n  </h1>\r\n  <h3 *ngIf=\"isLoading\">Loading...</h3>\r\n  <h3>{{message || message}}</h3>\r\n\r\n</div>\r\n\r\n<div class='petsList'>\r\n  <ul>\r\n    <li *ngFor=\"let owner of petsResult\">\r\n      <h3>{{owner.ownerGender}}</h3>\r\n      <div *ngFor=\"let cat of owner.cats\">\r\n        <p>{{cat.name}} </p>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -72,7 +72,7 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this._httpService.get('/api/pets').subscribe(function (response) {
             console.log('api result', response.status, response.statusText);
-            if (response.status == 200) {
+            if (response.status === 200) {
                 _this.petsResult = response.json();
                 if (_this.petsResult.length == 0)
                     _this.message = 'No data returned from Api';
