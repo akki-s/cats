@@ -23,3 +23,7 @@
 
 Angular App was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.4.
 
+## Running locally
+- Install Angular CLI npm install @angular/cli --global
+- Open solution in Visual Studio and build. A post build even is added for debug configuration that build angular app.
+
