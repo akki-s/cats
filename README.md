@@ -1,4 +1,4 @@
-## Technology Used
+. ## Technology Used
 
 - dotnet Core 2.0
 - Angular
@@ -19,7 +19,7 @@
 ## Details
 
 - For quick view, i've deployed the app to Azure here -> [https://aakash-agl.azurewebsites.net/](https://aakash-agl.azurewebsites.net/)
-- Swagger endpoint for Api -> [https://aakash-agl.azurewebsites.net/swagger](https://aakash-agl.azurewebsites.net/swagger)
+- Swagger endpoint for Api -> [https://aakash-agl.azurewebsites.net/swagger](https://aakash-agl.azurewebsites.net/swagger). IE doesn't load up the swagger UI, as CORS is not enabled, but it works fine from Chrome. Swagger json can directly be accessed at [https://aakash-agl.azurewebsites.net/swagger/v1/swagger.json](https://aakash-agl.azurewebsites.net/swagger/v1/swagger.json)
 - API endpoint to get grouped content -> [https://aakash-agl.azurewebsites.net/api/pets](https://aakash-agl.azurewebsites.net/api/pets)
 
 ## Angular App Scaffold
