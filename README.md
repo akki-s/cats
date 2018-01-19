@@ -1,4 +1,4 @@
-. ## Technology Used
+## Technology Used
 
 - dotnet Core 2.0
 - Angular
